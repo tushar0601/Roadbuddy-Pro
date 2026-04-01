@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Shield, QrCode, BellRing } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
+import { InstallPwaButton } from "../install/install-button";
 export function LandingHero() {
   return (
     <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-slate-950 px-6 py-16">
@@ -19,6 +19,7 @@ export function LandingHero() {
               <div className="space-y-4">
                 <h1 className="text-4xl font-bold tracking-tight text-slate-100 sm:text-5xl md:text-6xl">
                   RoadBuddy
+                  <InstallPwaButton/>
                 </h1>
 
                 <p className="max-w-xl text-base leading-7 text-slate-400 sm:text-lg">
