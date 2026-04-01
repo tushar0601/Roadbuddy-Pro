@@ -7,7 +7,10 @@ from app.api.v1.router import api_router
 app = FastAPI(title="RoadBuddy API")
 
 
-origins = [""]
+origins = [
+    "http://localhost:3000",
+    "https://roadbuddy-pro.vercel.app",
+]
 
 app.add_middleware(
     CORSMiddleware,
