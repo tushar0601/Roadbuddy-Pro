@@ -1,7 +1,8 @@
 # Node
-frontend/node_modules
-frontend/.next
-frontend/.env
+frontend/roadbuddy_pro/node_modules
+frontend/roadbuddy_pro/.next
+frontend/roadbuddy_pro/.env
+frontend/roadbuddy_pro/.env.local
 
 # Python
 backend/venv
