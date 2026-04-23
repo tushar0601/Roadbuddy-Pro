@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { SerwistProvider } from "./serwist";
+import { PushNotificationInit } from "@/components/pwa/push-notification-init";
 
 export const metadata: Metadata = {
   applicationName: "RoadBuddy",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <QueryProvider>
             {children}
             <Toaster />
+            <PushNotificationInit />
           </QueryProvider>
         </SerwistProvider>
       </body>
