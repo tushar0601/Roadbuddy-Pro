@@ -42,10 +42,15 @@ export function LoginForm() {
 
       const response = await api.post<SigninResponse>("/user/signin", values);
 
-      setToken(response.data.access_token);
+      const { access_token, is_admin } = response.data;
+      setToken(access_token, response.data.is_admin);
       toast.success("Signed in successfully");
 
-      router.push("/dashboard");
+      if (is_admin) {
+        router.replace("/admin");
+      } else {
+        router.replace("/dashboard");
+      }
     } catch (error: any) {
       const message = error?.response?.data?.detail || "Unable to sign in";
       toast.error(message);

@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     VAPID_PRIVATE_KEY: str
     VAPID_SUBJECT: str = "mailto:your-email@example.com"
     WEB_PUSH_TTL_SECONDS: int = 600
+    FRONTEND_BASE_URL: str
     model_config = SettingsConfigDict(
         env_file=".env",
         extra="ignore",

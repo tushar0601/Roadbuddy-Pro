@@ -27,7 +27,7 @@ class UserService:
         )
         return user
 
-    def signin(self, email: str, password: str) -> str:
+    def signin(self, email: str, password: str) -> tuple[str, bool]:
         user = self.repo.get_by_email(email)
         if not user:
             raise HTTPException(
@@ -41,4 +41,5 @@ class UserService:
                 detail="Invalid email or password",
             )
 
-        return create_access_token(user.email)
+        token = create_access_token(user.email)
+        return token, user.is_admin

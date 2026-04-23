@@ -41,3 +41,20 @@ def get_current_user(
         )
 
     return user
+
+def get_current_admin_user(
+    current_user: AppUser = Depends(get_current_user),
+) -> AppUser:
+    if not current_user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Inactive user",
+        )
+
+    if not current_user.is_admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required",
+        )
+
+    return current_user

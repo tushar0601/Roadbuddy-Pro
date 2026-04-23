@@ -23,3 +23,4 @@ class UserResponse(BaseModel):
 class SigninResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    is_admin: bool = False

@@ -32,8 +32,11 @@ def signup(payload: UserSignupRequest, db: Session = Depends(get_db)):
 @router.post("/signin", response_model=SigninResponse)
 def signin(payload: UserSigninRequest, db: Session = Depends(get_db)):
     service = UserService(db)
-    token = service.signin(
+    token, is_admin = service.signin(
         email=payload.email,
         password=payload.password,
     )
-    return SigninResponse(access_token=token)
+    return SigninResponse(
+        access_token=token,
+        is_admin=is_admin,
+    )

@@ -13,6 +13,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 type PublicPingScreenProps = {
   publicCode: string;
+  sticker: {
+    status: string;
+    is_active: boolean;
+  };
 };
 
 type PingFormValues = {
@@ -27,7 +31,10 @@ const REASON_OPTIONS = [
   "Other",
 ];
 
-export function PublicPingScreen({ publicCode }: PublicPingScreenProps) {
+export function PublicPingScreen({
+  publicCode,
+  sticker,
+}: PublicPingScreenProps) {
   const {
     createPing,
     createPingPending,
@@ -82,6 +89,33 @@ export function PublicPingScreen({ publicCode }: PublicPingScreenProps) {
     });
   };
 
+  if (!sticker.is_active) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
+        <Card className="w-full max-w-md rounded-3xl border border-slate-800 bg-slate-900 shadow-2xl">
+          <CardContent className="p-6 text-center">
+            <div className="mb-6 flex justify-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-500/10 text-red-400">
+                <AlertCircle className="h-8 w-8" />
+              </div>
+            </div>
+
+            <h1 className="text-2xl font-semibold text-slate-50">
+              QR Code Not Active
+            </h1>
+
+            <p className="mt-3 text-sm text-slate-400">
+              This sticker is not active or no longer valid.
+            </p>
+
+            <p className="mt-4 text-xs text-slate-500">
+              Status: {sticker.status}
+            </p>
+          </CardContent>
+        </Card>
+      </main>
+    );
+  }
   if (createPingSuccess && createPingResponse) {
     return (
       <main className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
