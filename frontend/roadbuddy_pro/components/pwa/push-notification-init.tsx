@@ -11,6 +11,7 @@ export function PushNotificationInit() {
       // Only run if user is logged in and browser supports push
       if (!getToken()) return
       if (!("serviceWorker" in navigator) || !("PushManager" in window)) return
+      if (!("Notification" in window)) return
       if (Notification.permission !== "granted") return
 
       const registration = await navigator.serviceWorker.ready
@@ -18,7 +19,10 @@ export function PushNotificationInit() {
 
       // Re-subscribe if no subscription exists (e.g. browser cleared it)
       if (!subscription) {
-        const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!
+        const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
+
+        if (!vapidKey) return
+
         subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(vapidKey),

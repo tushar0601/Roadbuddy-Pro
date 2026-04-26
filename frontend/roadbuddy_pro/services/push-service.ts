@@ -9,6 +9,6 @@ export type PushSubscriptionPayload = {
 }
 
 export async function savePushSubscription(payload: PushSubscriptionPayload) {
-  const res = await api.post("/push-subscriptions", payload)
+  const res = await api.post("/push-subscriptions/", payload)
   return res.data
 }

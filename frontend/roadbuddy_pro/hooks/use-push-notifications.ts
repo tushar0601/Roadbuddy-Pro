@@ -14,6 +14,10 @@ export function usePushNotifications() {
         throw new Error("Push not supported")
       }
 
+      if (!("Notification" in window)) {
+        throw new Error("Notifications not supported")
+      }
+
       // 1. Ask permission
       const permission = await Notification.requestPermission()
 
@@ -28,7 +32,11 @@ export function usePushNotifications() {
       let subscription = await registration.pushManager.getSubscription()
 
       if (!subscription) {
-        const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!
+        const vapidKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY
+
+        if (!vapidKey) {
+          throw new Error("Missing VAPID public key")
+        }
 
         subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,

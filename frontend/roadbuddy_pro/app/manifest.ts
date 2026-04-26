@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "RoadBuddy",
     short_name: "RoadBuddy",
     description: "RoadBuddy - parking notifications and vehicle-based alerts.",
-    start_url: "/",
+    start_url: "/dashboard",
     scope: "/",
     display: "standalone",
     orientation: "portrait",

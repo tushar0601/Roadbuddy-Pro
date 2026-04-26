@@ -1,5 +1,5 @@
-import { LandingHero } from "@/components/common/landing-hero"
+import { AuthAwareHome } from "@/components/common/auth-aware-home";
 
 export default function HomePage() {
-  return <LandingHero />
+  return <AuthAwareHome />;
 }

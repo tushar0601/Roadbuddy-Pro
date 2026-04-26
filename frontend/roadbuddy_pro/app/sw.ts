@@ -48,8 +48,8 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title ?? "RoadBuddy", {
       body: data.body ?? "You have a new notification.",
-      icon: data.icon ?? "/icons/icon-192x192.png",
-      badge: data.badge ?? "/icons/icon-192x192.png",
+      icon: data.icon ?? "/icons/icon-192.png",
+      badge: data.badge ?? "/icons/icon-192-maskable.png",
       data: { url: data.url ?? "/dashboard" },
     }),
   );

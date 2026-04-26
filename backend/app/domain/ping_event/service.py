@@ -96,8 +96,8 @@ class PingEventService:
         push_payload = {
             "title": title,
             "body": body,
-            "icon": "/icons/icon-192x192.png",
-            "badge": "/icons/icon-192x192.png",
+            "icon": "/icons/icon-192.png",
+            "badge": "/icons/icon-192-maskable.png",
             "url": "/dashboard",
         }
 
